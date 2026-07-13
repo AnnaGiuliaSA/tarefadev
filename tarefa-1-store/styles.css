@@ -1,0 +1,342 @@
+/* 1. Definição de Variáveis de Cores (Tema Claro por Padrão) */
+:root {
+    --bg-system: #fff8e1;       /* Fundo suave da página */
+    --bg-card: #fffdf5;         /* Fundo dos cards e modal */
+    --text-main: #4a3000;       /* Texto principal (marrom escuro) */
+    --text-muted: #8a6b1f;      /* Texto secundário (amarelo escuro) */
+    --border-color: #f2d36b;    /* Linhas e bordas sutis */
+    --accent-color: #f4b400;    /* Amarelo dourado principal */
+    --shadow-sm: 0 1px 3px rgba(0,0,0,0.1);
+    --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);
+}
+
+/* 2. Variáveis para o Tema Escuro (Ativado via JavaScript) */
+[data-theme="dark"] {
+    --bg-system: #2e2300;       /* Fundo escuro */
+    --bg-card: #473500;         /* Cards um pouco mais claros que o fundo */
+    --text-main: #fff4cc;       /* Texto claro */
+    --text-muted: #f3dd9c;      /* Texto amarelo claro */
+    --border-color: #8a6a1d;    /* Bordas escuras */
+    --accent-color: #ffd54f;    /* Amarelo brilhante para destaque */
+    --shadow-sm: 0 1px 3px rgba(0,0,0,0.3);
+    --shadow-md: 0 4px 10px rgba(0,0,0,0.4);
+}
+
+/* 3. Estilização Global e Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: var(--bg-system);
+    color: var(--text-main);
+    transition: background-color 0.3s, color 0.3s;
+    min-height: 100vh;
+}
+
+/* 4. Header e Toolbar */
+.site-header {
+    border-bottom: 3px solid var(--accent-color);
+    padding: 15px 0;
+    background-color: var(--bg-card);
+    transition: background-color 0.3s;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    gap: 16px;
+}
+
+.header-brand {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    min-width: 0;
+}
+
+.header-brand img {
+    height: 90px;
+    width: auto;
+    object-fit: contain;
+    flex-shrink: 0;
+}
+
+.header-brand-text {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.header-brand-text h1 {
+    font-size: 1.4rem;
+    color: var(--accent-color);
+    margin: 0;
+    font-weight: 700;
+}
+
+.header-brand-text::before {
+    content: "";
+    height: 30px;
+    width: 2px;
+    background-color: var(--border-color);
+    display: block;
+}
+
+.header-actions {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.btn-cart {
+    background: var(--accent-color);
+    border: none;
+    padding: 8px 20px;
+    border-radius: 6px;
+    cursor: pointer;
+    color: white;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.2s;
+    box-shadow: var(--shadow-sm);
+}
+
+.btn-theme {
+    background: transparent;
+    border: 1px solid var(--border-color);
+    padding: 8px 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    color: var(--text-main);
+    font-weight: 500;
+    transition: all 0.2s;
+}
+
+.toolbar-actions {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.btn-filter {
+    transition: all 0.2s ease;
+}
+
+.btn-filter:hover {
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-sm);
+    filter: brightness(1.1);
+}
+
+/* 5. Customização da Barra de Pesquisa */
+#search-input:focus {
+    outline: none;
+    border-color: var(--accent-color);
+    box-shadow: 0 0 0 3px rgba(244, 180, 0, 0.2);
+}
+
+[data-theme="dark"] #search-input:focus {
+    box-shadow: 0 0 0 3px rgba(255, 213, 79, 0.25);
+}
+
+/* 6. Efeitos de Transição do Modal */
+.modal {
+    transition: opacity 0.3s ease;
+}
+
+.modal-content {
+    border: 1px solid var(--border-color);
+}
+
+.modal-close {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: transparent;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: var(--text-muted);
+}
+
+#close-modal:hover,
+#close-cart-modal:hover {
+    color: #ef4444 !important;
+}
+
+.cart-modal-content {
+    max-width: 560px;
+    width: min(90%, 560px);
+}
+
+.cart-items-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.cart-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.cart-item-info {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.cart-item-title {
+    font-weight: 600;
+    color: var(--text-main);
+}
+
+.cart-item-price {
+    font-size: 0.95rem;
+    color: var(--text-muted);
+}
+
+.btn-remove-cart {
+    background: transparent;
+    border: none;
+    color: #ef4444;
+    font-size: 1.1rem;
+    cursor: pointer;
+    padding: 4px 8px;
+}
+
+.cart-empty {
+    color: var(--text-muted);
+    padding: 20px 0;
+    text-align: center;
+}
+
+.cart-summary {
+    margin-top: 16px;
+    padding-top: 12px;
+    border-top: 1px solid var(--border-color);
+    text-align: right;
+    color: var(--text-main);
+}
+
+/* Footer */
+.footer-links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    line-height: 2;
+    color: var(--text-muted);
+    font-size: 0.9rem;
+}
+
+.footer-links a {
+    color: inherit;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.footer-links a:hover {
+    color: var(--accent-color);
+}
+
+.social-links a {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.social-icon {
+    width: 18px;
+    height: 18px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.social-icon svg {
+    width: 100%;
+    height: 100%;
+    fill: currentColor;
+}
+
+/* Botão de Alternar Tema */
+.btn-theme:hover,
+.btn-cart:hover {
+    filter: brightness(1.05);
+}
+
+@media (max-width: 768px) {
+    .header-container {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .header-brand {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+    }
+
+    .header-brand-text::before {
+        display: none;
+    }
+
+    .toolbar-actions {
+        width: 100%;
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .filter-buttons {
+        width: 100%;
+    }
+
+    .filter-buttons button {
+        flex: 1 1 calc(50% - 10px);
+        min-width: 120px;
+    }
+}
+
+@media (max-width: 480px) {
+    .header-container {
+        padding: 0 15px;
+    }
+
+    .header-brand img {
+        height: 42px;
+    }
+
+    .header-brand-text h1 {
+        font-size: 1.1rem;
+    }
+
+    .btn-theme,
+    .btn-cart {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .filter-buttons button {
+        flex: 1 1 100%;
+    }
+}

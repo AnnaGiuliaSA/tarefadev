@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gstore</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- Cabeçalho Institucional -->
+    <header class="site-header">
+        <div class="header-container">
+            <div class="header-brand">
+                <img src="studio.png" alt="Gstore Logo">
+                <div class="header-brand-text">
+                    <h1>Gstore</h1>
+                </div>
+            </div>
+
+            <div class="header-actions">
+                <button id="cart-btn" class="btn-cart">
+                    🛒 <span id="cart-count">0</span> itens
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Conteúdo Principal do ERP -->
+    <main style="max-width: 1200px; margin: 40px auto; padding: 0 20px; min-height: 50vh;">
+        <!-- Barra de Ferramentas: Pesquisa e Filtros -->
+        <section class="toolbar" style="display: flex; flex-wrap: wrap; gap: 20px; justify-content: space-between; margin-bottom: 30px;">
+            <div class="search-box" style="flex: 1; min-width: 300px;">
+                <input type="text" id="search-input" placeholder="🔍 Buscar por roupa ou descrição..." style="width: 100%; padding: 12px 16px; border-radius: 8px; border: 1px solid var(--border-color); background-color: var(--bg-card); color: var(--text-main); font-size: 1rem;">
+            </div>
+
+            <div class="toolbar-actions">
+                <button id="theme-toggle" class="btn-theme">🌓 Tema</button>
+                <div class="filter-buttons" style="display: flex; gap: 10px; flex-wrap: wrap;">
+                    <button class="btn-filter active" data-category="todos" style="padding: 10px 20px; border-radius: 6px; border: none; background-color: var(--accent-color); color: white; cursor: pointer; font-weight: 500;">Todos</button>
+                    <button class="btn-filter" data-category="Roupas" style="padding: 10px 20px; border-radius: 6px; border: 1px solid var(--border-color); background-color: var(--bg-card); color: var(--text-main); cursor: pointer; font-weight: 500;">Roupas</button>
+                    <button class="btn-filter" data-category="Camisetas" style="padding: 10px 20px; border-radius: 6px; border: 1px solid var(--border-color); background-color: var(--bg-card); color: var(--text-main); cursor: pointer; font-weight: 500;">Camisetas</button>
+                    <button class="btn-filter" data-category="Calças Bermuda" style="padding: 10px 20px; border-radius: 6px; border: 1px solid var(--border-color); background-color: var(--bg-card); color: var(--text-main); cursor: pointer; font-weight: 500;">Calças Bermuda</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Grade onde os produtos vão aparecer dinamicamente -->
+        <section id="products-grid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 25px;">
+            <!-- Cards injetados pelo JS -->
+        </section>
+    </main>
+
+    <!-- NOVO: Rodapé Estilo Kalunga -->
+    <footer style="background-color: var(--bg-card); border-top: 1px solid var(--border-color); padding: 50px 20px 20px; margin-top: 60px;">
+        <div style="max-width: 1200px; margin: 0 auto;">
+            
+            <!-- Grid de 4 Colunas -->
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 30px; margin-bottom: 40px; padding-bottom: 40px; border-bottom: 1px solid var(--border-color);">
+                
+                <!-- Coluna 1 -->
+                <div>
+                    <h4 style="color: var(--accent-color); margin-bottom: 15px; font-size: 1rem;">Institucional</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">Sobre a Develop Sistemas</a></li>
+                        <li><a href="#">Trabalhe Conosco</a></li>
+                        <li><a href="#">Vendas para Empresas</a></li>
+                        <li><a href="#">Contrato Corporativo</a></li>
+                        <li><a href="#">Fale Conosco</a></li>
+                    </ul>
+                </div>
+
+                <!-- Coluna 2 -->
+                <div>
+                    <h4 style="color: var(--accent-color); margin-bottom: 15px; font-size: 1rem;">Dúvidas</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">Como funciona o sistema</a></li>
+                        <li><a href="#">Dúvidas sobre faturamento</a></li>
+                        <li><a href="#">Acompanhamento de pedidos</a></li>
+                        <li><a href="#">Política de Troca e Devolução</a></li>
+                        <li><a href="#">Política de Privacidade</a></li>
+                    </ul>
+                </div>
+
+                <!-- Coluna 3 -->
+                <div>
+                    <h4 style="color: var(--accent-color); margin-bottom: 15px; font-size: 1rem;">Atendimento e Redes</h4>
+                    <ul class="footer-links social-links">
+                        <li><a href="#" class="social-link"><span class="social-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7.8 2h8.4A5.8 5.8 0 0 1 22 7.8v8.4A5.8 5.8 0 0 1 16.2 22H7.8A5.8 5.8 0 0 1 2 16.2V7.8A5.8 5.8 0 0 1 7.8 2Zm-.2 2A3.6 3.6 0 0 0 4 7.6v8.8A3.6 3.6 0 0 0 7.6 20h8.8a3.6 3.6 0 0 0 3.6-3.6V7.6A3.6 3.6 0 0 0 16.4 4H7.6Zm9.65 1.5a1.15 1.15 0 1 1 0 2.3 1.15 1.15 0 0 1 0-2.3ZM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10Zm0 2a3 3 0 1 0 0 6 3 3 0 0 0 0-6Z"/></svg></span> Instagram</a></li>
+                        <li><a href="#" class="social-link"><span class="social-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.94 8.5A1.56 1.56 0 1 0 6.94 5.38a1.56 1.56 0 0 0 0 3.12Zm-1.3 1.2h2.6V18h-2.6V9.7Zm4.14 0h2.49v1.14h.03c.35-.66 1.2-1.36 2.48-1.36 2.66 0 3.15 1.75 3.15 4.02V18h-2.6v-7.68c0-1.83-.03-4.18-2.55-4.18-2.55 0-2.94 1.99-2.94 4.04V18h-2.6V9.7Z"/></svg></span> LinkedIn</a></li>
+                        <li><a href="#" class="social-link"><span class="social-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21.6 7.2c-.2-1.3-.7-2.4-1.6-3.4-.9-1-2-1.5-3.4-1.7C15 2 12 2 12 2s-3 0-4.6.1c-1.4.2-2.5.7-3.4 1.7-.9 1-1.4 2.1-1.6 3.4C2 8.8 2 12 2 12s0 3.2.1 4.8c.2 1.3.7 2.4 1.6 3.4.9 1 2 1.5 3.4 1.7C9 22 12 22 12 22s3 0 4.6-.1c1.4-.2 2.5-.7 3.4-1.7.9-1 1.4-2.1 1.6-3.4.1-1.6.1-4.8.1-4.8s0-3.2-.1-4.8ZM10 15.5V8.5l6 3.5-6 3.5Z"/></svg></span> YouTube</a></li>
+                        <li><a href="#" class="social-link"><span class="social-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19.05 4.94A9.95 9.95 0 0 0 4.95 19.05c0 1.75-.05 3.45-.15 4.75l-1.3 4.3 4.4-1.2c1.3.07 2.6.1 3.85.1a9.95 9.95 0 0 0 8.3-16.06Zm-8.2 15.5h-.02a8.2 8.2 0 0 1-4.18-1.14l-.3-.18-2.6.7.7-2.55-.2-.28A8.2 8.2 0 1 1 10.84 20.44Zm4.5-6.14c-.25-.12-1.46-.72-1.69-.8-.23-.08-.4-.12-.57.12-.16.24-.64.8-.78.96-.14.16-.29.18-.54.06-.25-.12-1.05-.39-2-1.25-.74-.66-1.24-1.47-1.38-1.72-.15-.25-.02-.38.11-.5.11-.11.25-.29.37-.43.12-.14.16-.24.24-.4.08-.16.04-.3-.02-.42-.06-.12-.57-1.37-.78-1.88-.2-.49-.4-.42-.57-.43h-.49c-.17 0-.44.06-.67.3-.23.24-.88.86-.88 2.1 0 1.24.9 2.43.1 2.9 1.87 3.08 3.72 3.56 5.18 3.95.5.12 1.04.1 1.43.06.44-.05 1.35-.55 1.54-1.08.19-.53.19-.98.13-1.08-.06-.1-.22-.16-.47-.28Z"/></svg></span> WhatsApp</a></li>
+                        <li><a href="#" class="social-link"><span class="social-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h16a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1Zm1 3.5v9h3.5v-9H5Zm5.2 0v9H13v-4.8h.04c.47-1 1.62-2.05 3.35-2.05 3.58 0 4.24 2.35 4.24 5.4V16.5h-3.5v-8.3c0-1.98-.04-4.52-2.76-4.52-2.75 0-3.17 2.14-3.17 4.35V16.5H10.2v-9Z"/></svg></span> Suporte via Ticket</a></li>
+                    </ul>
+                </div>
+
+                <!-- Coluna 4 -->
+                <div>
+                    <h4 style="color: var(--accent-color); margin-bottom: 15px; font-size: 1rem;">Formas de Pagamento</h4>
+                    <div style="color: var(--text-muted); font-size: 0.9rem; line-height: 1.6;">
+                        <p><strong>Cartão de Crédito:</strong><br> Visa, MasterCard, Elo</p>
+                        <p style="margin-top: 10px;"><strong>À vista:</strong><br> PIX e Boleto Faturado (Pessoa Jurídica)</p>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Rodapé Final (Textos legais) -->
+            <div style="text-align: center; color: var(--text-muted); font-size: 0.75rem; line-height: 1.6;">
+                <p style="font-weight: 600; color: var(--text-main); margin-bottom: 10px; font-size: 0.85rem;">Certificados e Segurança: SSL Seguro | Autenticação em 2 Fatores</p>
+                <p>Os preços, promoções, condições de pagamento, frete e estoque são válidos apenas para emissões via sistema. No caso de diferença de preço, o valor válido é o do carrinho de compras.</p>
+                <p style="margin-top: 10px; font-weight: bold; color: var(--text-main);">Develop Sistemas S/A - CNPJ: 12.345.678/0001-99 - Endereço: Av. Voluntário Fernando Pinheiro Franco, Centro - Mogi das Cruzes - SP</p>
+            </div>
+
+        </div>
+    </footer>
+
+    <!-- Modal de Detalhes do Produto -->
+    <div id="product-modal" class="modal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.6); justify-content: center; align-items: center; z-index: 1000; backdrop-filter: blur(4px);">
+        <div class="modal-content" style="background-color: var(--bg-card); color: var(--text-main); padding: 30px; border-radius: 12px; max-width: 500px; width: 90%; position: relative; box-shadow: var(--shadow-md);">
+            <button id="close-modal" style="position: absolute; top: 15px; right: 15px; background: transparent; border: none; font-size: 1.5rem; cursor: pointer; color: var(--text-muted);">&times;</button>
+            <span id="modal-category" style="font-size: 0.85rem; text-transform: uppercase; color: var(--accent-color); font-weight: 700;">Categoria</span>
+            <h2 id="modal-title" style="margin: 5px 0 15px 0;">Nome</h2>
+            <p id="modal-description" style="color: var(--text-muted); margin-bottom: 20px;">Desc</p>
+            
+            <div style="display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--border-color); padding-top: 20px;">
+                <div>
+                    <strong id="modal-price" style="font-size: 1.4rem;">R$ 0,00</strong>
+                </div>
+                <!-- NOVO: Botão de Adicionar ao Carrinho dentro do Modal -->
+                <button id="add-to-cart-btn" style="background-color: var(--accent-color); color: white; border: none; padding: 10px 20px; border-radius: 6px; font-weight: bold; cursor: pointer;">
+                    Adicionar ao Pedido
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div id="cart-modal" class="modal cart-modal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.6); justify-content: center; align-items: center; z-index: 1000; backdrop-filter: blur(4px);">
+        <div class="modal-content cart-modal-content" style="background-color: var(--bg-card); color: var(--text-main); padding: 30px; border-radius: 12px; max-width: 560px; width: 90%; position: relative; box-shadow: var(--shadow-md);">
+            <button id="close-cart-modal" class="modal-close" aria-label="Fechar carrinho">&times;</button>
+            <h2 style="margin-bottom: 15px;">Seu Pedido</h2>
+            <div id="cart-items-list" class="cart-items-list"></div>
+            <div class="cart-summary">
+                <strong id="cart-total">Valor total: R$ 0,00</strong>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
