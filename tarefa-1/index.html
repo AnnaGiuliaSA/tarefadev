@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ERP Catalog</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header class="app-header">
+      <div class="brand">
+        <img src="assets/logo-develops.jpg" alt="Logo Develops" class="brand-logo" />
+        <div>
+          <h1>Tech Parts Catalog</h1>
+          <p>Catálogo de peças de computador em estoque</p>
+        </div>
+      </div>
+      <div class="header-actions">
+        <button id="login-toggle" class="login-button" type="button" aria-label="Entrar">
+          <span class="login-icon">👤</span>
+          <span id="login-label">Login</span>
+        </button>
+        <button id="theme-toggle" class="theme-toggle" type="button" aria-label="Alternar tema">
+          <span class="toggle-track">
+            <span class="toggle-thumb"></span>
+          </span>
+          <span id="theme-label">Dark Mode</span>
+        </button>
+      </div>
+    </header>
+
+    <div id="login-modal" class="login-modal hidden" role="dialog" aria-modal="true" aria-labelledby="login-title">
+      <div class="login-card">
+        <h2 id="login-title">Acessar conta</h2>
+        <p>Entre com seus dados para continuar navegando.</p>
+        <input id="login-name" type="text" placeholder="Nome de usuário" />
+        <input id="login-password" type="password" placeholder="Senha" />
+        <button id="login-submit" type="button">Entrar</button>
+        <button id="login-close" class="text-button" type="button">Fechar</button>
+      </div>
+    </div>
+
+    <main class="app-shell">
+      <section class="catalog-panel">
+        <div class="controls">
+          <label class="control-field">
+            <span>Buscar</span>
+            <input id="search-input" type="search" placeholder="Pesquisar produto" />
+          </label>
+          <label class="control-field">
+            <span>Categoria</span>
+            <select id="category-filter">
+              <option value="all">Todas</option>
+            </select>
+          </label>
+          <label class="control-field">
+            <span>Ordenar</span>
+            <select id="sort-filter">
+              <option value="name">Nome</option>
+              <option value="price-asc">Preço: menor para maior</option>
+              <option value="price-desc">Preço: maior para menor</option>
+              <option value="stock">Estoque</option>
+            </select>
+          </label>
+        </div>
+
+        <div id="product-grid" class="product-grid" aria-live="polite"></div>
+      </section>
+
+      <aside class="cart-panel">
+        <div class="cart-header">
+          <h2>Carrinho</h2>
+          <span id="cart-count" class="pill">0 itens</span>
+        </div>
+        <div id="cart-items" class="cart-items"></div>
+        <div class="cart-summary">
+          <div class="summary-row">
+            <span>Total</span>
+            <strong id="cart-total">R$ 0,00</strong>
+          </div>
+        </div>
+      </aside>
+    </main>
+
+    <footer class="site-footer">
+      <div class="footer-columns">
+        <div>
+          <h3>Institucional</h3>
+          <ul>
+            <li>Sobre a Develops</li>
+            <li>Política de privacidade</li>
+            <li>Termos de uso</li>
+          </ul>
+        </div>
+        <div>
+          <h3>Dúvidas</h3>
+          <ul>
+            <li>Atendimento via chat</li>
+            <li>Central de ajuda</li>
+            <li>Trocas e devoluções</li>
+          </ul>
+        </div>
+        <div>
+          <h3>Redes Sociais</h3>
+          <ul class="social-list">
+            <li>📘 Facebook</li>
+            <li>📸 Instagram</li>
+            <li>💼 LinkedIn</li>
+          </ul>
+        </div>
+        <div>
+          <h3>Formas de Pagamento</h3>
+          <ul>
+            <li>Cartões de crédito</li>
+            <li>Boleto bancário</li>
+            <li>Carteiras digitais</li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-security">
+        <h3>Certificados e Segurança</h3>
+        <p>Compras protegidas, dados criptografados e certificados de conformidade.</p>
+      </div>
+      <p class="legal-text">
+        Os preços, promoções, condições de pagamento, frete e estoque são válidos apenas para compras pelo site. No caso de diferença de preço no site, o valor válido é o do carrinho de compras.
+      </p>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>

@@ -1,0 +1,462 @@
+:root {
+  color-scheme: light;
+  --bg: #f4f7fb;
+  --surface: #ffffff;
+  --surface-alt: #eef3ff;
+  --text: #172033;
+  --muted: #60708f;
+  --primary: #2563eb;
+  --primary-strong: #1d4ed8;
+  --border: #dbe5f2;
+  --shadow: 0 12px 30px rgba(15, 23, 42, 0.08);
+  --status-ok: #16a34a;
+  --status-warn: #f59e0b;
+  --status-bad: #dc2626;
+}
+
+:root[data-theme='dark'] {
+  color-scheme: dark;
+  --bg: #07111f;
+  --surface: #101a2f;
+  --surface-alt: #19263a;
+  --text: #eef2ff;
+  --muted: #8fa0bf;
+  --primary: #60a5fa;
+  --primary-strong: #3b82f6;
+  --border: #2a3958;
+  --shadow: 0 14px 34px rgba(2, 8, 23, 0.45);
+  --status-ok: #4ade80;
+  --status-warn: #fbbf24;
+  --status-bad: #f87171;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  transition: background 0.25s ease, color 0.25s ease;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+.app-header {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 1.4rem;
+  background: color-mix(in srgb, var(--surface) 92%, transparent);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--border);
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+}
+
+.brand-logo {
+  width: 64px;
+  height: auto;
+  object-fit: contain;
+  border-radius: 0;
+  box-shadow: none;
+  padding: 0.2rem;
+}
+
+.brand h1 {
+  margin: 0;
+  font-size: 1.2rem;
+}
+
+.brand p {
+  margin: 0.2rem 0 0;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+}
+
+.theme-toggle,
+.login-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.7rem;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text);
+  padding: 0.7rem 0.95rem;
+  border-radius: 999px;
+  cursor: pointer;
+  box-shadow: var(--shadow);
+}
+
+.login-button {
+  font-weight: 700;
+}
+
+.login-icon {
+  font-size: 1rem;
+}
+
+.toggle-track {
+  position: relative;
+  width: 46px;
+  height: 26px;
+  border-radius: 999px;
+  background: var(--surface-alt);
+  display: inline-flex;
+  align-items: center;
+  padding: 3px;
+}
+
+.toggle-thumb {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: var(--primary);
+  transition: transform 0.2s ease;
+  transform: translateX(0);
+}
+
+:root[data-theme='dark'] .toggle-thumb {
+  transform: translateX(20px);
+}
+
+.login-modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(2, 8, 23, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 50;
+  padding: 1rem;
+}
+
+.login-modal.hidden {
+  display: none;
+}
+
+.login-card {
+  width: min(100%, 360px);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  padding: 1.2rem;
+  box-shadow: var(--shadow);
+  display: grid;
+  gap: 0.8rem;
+}
+
+.login-card h2 {
+  margin: 0;
+}
+
+.login-card input {
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 0.75rem 0.8rem;
+  background: var(--surface-alt);
+  color: var(--text);
+}
+
+.login-card button {
+  border: none;
+  border-radius: 12px;
+  padding: 0.75rem 0.9rem;
+  background: var(--primary);
+  color: #fff;
+  cursor: pointer;
+  font-weight: 700;
+}
+
+.text-button {
+  background: transparent !important;
+  color: var(--muted) !important;
+  box-shadow: none;
+}
+
+.app-shell {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 1.2rem;
+  padding: 1.2rem;
+}
+
+.catalog-panel,
+.cart-panel,
+.site-footer {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  box-shadow: var(--shadow);
+}
+
+.catalog-panel {
+  padding: 1rem;
+}
+
+.controls {
+  display: grid;
+  gap: 0.8rem;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  margin-bottom: 1rem;
+}
+
+.control-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  color: var(--muted);
+  font-size: 0.92rem;
+}
+
+.control-field input,
+.control-field select {
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 0.7rem 0.8rem;
+  background: var(--surface-alt);
+  color: var(--text);
+}
+
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem;
+}
+
+.product-card {
+  background: var(--surface-alt);
+  border-radius: 16px;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+  border: 1px solid var(--border);
+}
+
+.product-card h3 {
+  margin: 0;
+  font-size: 1rem;
+}
+
+.product-meta {
+  color: var(--muted);
+  font-size: 0.93rem;
+}
+
+.price-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: 700;
+}
+
+.status-badge {
+  display: inline-flex;
+  width: fit-content;
+  padding: 0.3rem 0.6rem;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
+.status-badge.in-stock {
+  background: rgba(22, 163, 74, 0.18);
+  color: var(--status-ok);
+}
+
+.status-badge.low-stock {
+  background: rgba(245, 158, 11, 0.2);
+  color: var(--status-warn);
+}
+
+.status-badge.out-stock {
+  background: rgba(220, 38, 38, 0.2);
+  color: var(--status-bad);
+}
+
+.add-button {
+  margin-top: auto;
+  border: none;
+  border-radius: 12px;
+  padding: 0.75rem 0.9rem;
+  background: var(--primary);
+  color: #fff;
+  cursor: pointer;
+  font-weight: 700;
+}
+
+.add-button:hover {
+  background: var(--primary-strong);
+}
+
+.cart-panel {
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  min-height: 300px;
+}
+
+.cart-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.pill {
+  padding: 0.35rem 0.65rem;
+  border-radius: 999px;
+  background: var(--surface-alt);
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+
+.cart-items {
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+  min-height: 140px;
+}
+
+.cart-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.7rem;
+  padding: 0.8rem;
+  background: var(--surface-alt);
+  border-radius: 12px;
+}
+
+.cart-item strong {
+  display: block;
+}
+
+.remove-button {
+  border: none;
+  background: transparent;
+  color: var(--status-bad);
+  cursor: pointer;
+  font-weight: 700;
+}
+
+.cart-summary {
+  margin-top: auto;
+  border-top: 1px solid var(--border);
+  padding-top: 0.8rem;
+}
+
+.summary-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 1rem;
+}
+
+.site-footer {
+  margin: 0 1.2rem 1.2rem;
+  padding: 1.2rem;
+}
+
+.footer-columns {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.site-footer h3 {
+  margin-top: 0;
+  margin-bottom: 0.65rem;
+}
+
+.site-footer ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  color: var(--muted);
+  display: grid;
+  gap: 0.4rem;
+}
+
+.footer-security {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border);
+}
+
+.legal-text {
+  margin-top: 1rem;
+  color: var(--muted);
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+.skeleton-card {
+  min-height: 220px;
+  border-radius: 16px;
+  background: linear-gradient(90deg, var(--surface-alt) 25%, var(--border) 50%, var(--surface-alt) 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1s infinite linear;
+}
+
+@keyframes shimmer {
+  from {
+    background-position: 200% 0;
+  }
+  to {
+    background-position: -200% 0;
+  }
+}
+
+.empty-state {
+  grid-column: 1 / -1;
+  padding: 1rem;
+  color: var(--muted);
+  text-align: center;
+  background: var(--surface-alt);
+  border-radius: 16px;
+}
+
+@media (max-width: 900px) {
+  .app-shell {
+    grid-template-columns: 1fr;
+  }
+
+  .footer-columns {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 640px) {
+  .app-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.7rem;
+  }
+
+  .controls {
+    grid-template-columns: 1fr;
+  }
+
+  .footer-columns {
+    grid-template-columns: 1fr;
+  }
+}
