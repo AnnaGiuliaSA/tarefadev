@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Landing page de apresentação do estúdio DEVGAMER com estética gamer." />
+    <title>DEVGAMER | Estúdio de Games</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;800&family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <script src="script.js" defer></script>
+  </head>
+  <body>
+    <div class="progress-bar" aria-hidden="true"></div>
+
+    <header class="site-header">
+      <a class="brand" href="#top" aria-label="Ir para o topo">
+        <img src="devgamer.png" alt="Logo DEVGAMER" class="brand-logo" />
+      </a>
+
+      <button class="menu-toggle" id="menu-toggle" aria-label="Abrir menu" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <nav class="site-nav" id="site-nav" aria-label="Navegação principal">
+        <a href="#about">Sobre</a>
+        <a href="#highlights">Destaques</a>
+        <a href="#metrics">Métricas</a>
+        <a href="#contact">Contato</a>
+      </nav>
+
+      <div class="header-actions">
+        <div class="icon-menu-wrapper">
+          <button class="icon-button" id="login-toggle" type="button" aria-label="Entrar" aria-expanded="false" aria-controls="account-menu">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M12 12a4 4 0 1 0-4-4 4 4 0 0 0 4 4Zm0 2c-4.42 0-8 2.24-8 5v1h16v-1c0-2.76-3.58-5-8-5Z" />
+            </svg>
+          </button>
+
+          <div class="account-menu" id="account-menu" role="menu" aria-label="Menu da conta">
+            <a href="#" role="menuitem">Perfil</a>
+            <a href="#" role="menuitem">Pedidos</a>
+          </div>
+        </div>
+
+        <button class="theme-toggle" id="theme-toggle" aria-label="Alternar tema">
+          <span class="theme-toggle__icon">☼</span>
+        </button>
+      </div>
+    </header>
+
+    <main id="top">
+      <section class="hero section">
+        <div class="hero-copy reveal-on-scroll">
+          <p class="eyebrow">Estúdio de jogos · Live service</p>
+          <h1 class="hero-title">A próxima geração do gameplay começa aqui.</h1>
+          <p class="hero-text">
+            Criamos mundos imersivos, mecânicas responsivas e experiências que combinam performance,
+            narrativa e impacto visual em cada frame.
+          </p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#highlights">Explorar o universo</a>
+            <a class="btn btn-secondary" href="#about">Conhecer a equipe</a>
+          </div>
+        </div>
+
+        <div class="hero-card reveal-on-scroll" data-delay="120">
+          <div class="hero-card__panel">
+            <p class="eyebrow">Status do projeto</p>
+            <h2>Nova temporada já em desenvolvimento</h2>
+            <ul>
+              <li>Modo cooperativo online</li>
+              <li>Eventos dinâmicos semanais</li>
+              <li>Atualizações com conteúdo contínuo</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="section metrics" id="metrics">
+        <div class="metric-card reveal-on-scroll">
+          <strong class="metric-value" data-count="120000">0</strong>
+          <span>Players online</span>
+        </div>
+        <div class="metric-card reveal-on-scroll" data-delay="100">
+          <strong class="metric-value" data-count="950000">0</strong>
+          <span>Total downloads</span>
+        </div>
+        <div class="metric-card reveal-on-scroll" data-delay="200">
+          <strong class="metric-value" data-count="42">0</strong>
+          <span>Eventos lançados</span>
+        </div>
+      </section>
+
+      <section class="section about" id="about">
+        <div class="section-heading reveal-on-scroll">
+          <p class="eyebrow">Nossa proposta</p>
+          <h2>Uma experiência premium, construída para jogadores exigentes.</h2>
+        </div>
+
+        <div class="feature-grid">
+          <article class="feature-card reveal-on-scroll" data-delay="80">
+            <h3>Performance de ponta</h3>
+            <p>Renderização otimizada, carregamento instantâneo e animações com foco em 60 FPS.</p>
+          </article>
+          <article class="feature-card reveal-on-scroll" data-delay="160">
+            <h3>Mecânicas profundas</h3>
+            <p>Combinação de combate fluido, progressão estratégica e conteúdo vivo no dia a dia.</p>
+          </article>
+          <article class="feature-card reveal-on-scroll" data-delay="240">
+            <h3>Universo expansivo</h3>
+            <p>Mapas interativos, eventos narrativos e sistemas que evoluem com a comunidade.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section highlights" id="highlights">
+        <div class="section-heading reveal-on-scroll">
+          <p class="eyebrow">Destaques</p>
+          <h2>Capture a essência do estúdio em cada painel.</h2>
+        </div>
+
+        <div class="carousel" aria-label="Carrossel de destaques">
+          <button class="carousel-control prev" type="button" aria-label="Slide anterior">‹</button>
+          <div class="carousel-window">
+            <div class="carousel-track">
+              <article class="carousel-slide active">
+                <div class="slide-content">
+                  <p class="slide-label">01 · Skyline Rift</p>
+                  <h3>Uma cidade suspensa com combate vertical.</h3>
+                  <p>Ambientes cinemáticos, iluminação dinâmica e um ritmo competitivo que desafia a reflexo.</p>
+                </div>
+              </article>
+              <article class="carousel-slide">
+                <div class="slide-content">
+                  <p class="slide-label">02 · Neon Drift</p>
+                  <h3>Runas de energia e alta velocidade em cada corrida.</h3>
+                  <p>Uma estética cyberpunk com trilha sonora imersiva e desafios de reações em tempo real.</p>
+                </div>
+              </article>
+              <article class="carousel-slide">
+                <div class="slide-content">
+                  <p class="slide-label">03 · Eclipse Arena</p>
+                  <h3>Estratégia e ação em mapas de alto risco.</h3>
+                  <p>Combinações de habilidade, movimentos táticos e eventos sorpresa que redefinem o combate.</p>
+                </div>
+              </article>
+            </div>
+          </div>
+          <button class="carousel-control next" type="button" aria-label="Próximo slide">›</button>
+        </div>
+      </section>
+
+      <section class="section cta reveal-on-scroll" id="contact">
+        <p class="eyebrow">Pronto para entrar no próximo capítulo?</p>
+        <h2>Transforme sua visão em um universo jogável.</h2>
+        <a class="btn btn-primary" href="mailto:team@devgamer.com">Fale com a equipe</a>
+      </section>
+    </main>
+
+    <button class="scroll-top" id="scroll-top" aria-label="Voltar ao topo">⤴</button>
+
+    <footer class="site-footer">
+      <p>© 2026 DEVGAMER — Crafted for sharp gameplay and bold worlds.</p>
+    </footer>
+  </body>
+</html>
